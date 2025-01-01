@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master  # Trigger on push to master branch
-  pull_request:
+  pull_request:  # Trigger on pull request events
 
 jobs:
   build-and-push-docker:
@@ -44,7 +44,7 @@ jobs:
   deploy:
     name: Deploy to Production
     runs-on: ubuntu-latest
-    needs: build-and-push-docker  # assuming build-and-push-docker job pushes the image to Docker Hub
+    needs: build-and-push-docker  # Ensures the build job completes first
 
     steps:
       # Set up Docker
@@ -64,9 +64,5 @@ jobs:
             -H "Content-Type: application/json" \
             -d '{
               "dockerImage": "${{ secrets.DOCKER_USERNAME }}/horoscope-api:${{ github.sha }}",
-              "dockerImageVersion": "${{ github.sha }}",
-              "env": {
-                "DOCKER_USERNAME": "${{ secrets.DOCKER_USERNAME }}",
-                "DOCKER_PASSWORD": "${{ secrets.DOCKER_PASSWORD }}"
-              }
+              "dockerImageVersion": "${{ github.sha }}"
             }'
