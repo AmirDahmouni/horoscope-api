@@ -1,7 +1,6 @@
 // swaggerDoc.ts
 require('dotenv').config()
 import { SwaggerDefinition } from 'swagger-jsdoc';
-const baseUrl = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`
 /**
  * @swagger
  * /horoscope:
@@ -61,7 +60,7 @@ export const swaggerDefinition: SwaggerDefinition = {
   },
   servers: [
     {
-      url: baseUrl,
+      url: "https://horoscope-api-aodx.onrender.com",
     },
   ],
 };
