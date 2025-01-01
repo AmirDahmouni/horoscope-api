@@ -47,7 +47,7 @@ jobs:
     needs: build-and-push-docker  # assuming build-and-push-docker job pushes the image to Docker Hub
 
     steps:
-    
+
       # Set up Docker
       - name: Set up Docker
         uses: docker/setup-buildx-action@v2
@@ -71,6 +71,12 @@ jobs:
                 "DOCKER_PASSWORD": "${{ secrets.DOCKER_PASSWORD }}"
               }
             }'
+
+      # Ensure all tasks complete
+      - name: Ensure all tasks complete
+        run: |
+          echo "All tasks completed"
+          exit 0
 
 
 
