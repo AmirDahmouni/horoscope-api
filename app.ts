@@ -5,10 +5,13 @@ import validateBirthdate from './middlewares/validateBirthday';
 require('dotenv').config()
 const getSign = require('horoscope').getSign;
 const getZodiac = require('horoscope').getZodiac;
+const swaggerUI = require("swagger-ui-express");
+const swaggerSpec = require("./swaggerConfig");
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(helmet());
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 app.get('/', (req: Request, res: Response): any => {
   return res.status(400).json({ message: 'Welcome to Horoscope API !' });
