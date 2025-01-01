@@ -2,6 +2,22 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "helmet": "^8.0.0"
+    "helmet": "^8.0.0",
+    "horoscope": "^2.0.1"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "ts-node app.ts"
+  },
+  "name": "horoscope-api",
+  "version": "1.0.0",
+  "main": "app.ts",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.2",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
   }
 }
